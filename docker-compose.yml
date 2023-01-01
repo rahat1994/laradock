@@ -416,7 +416,15 @@ services:
       networks:
         - frontend
         - backend
-
+# Node aprtner
+    node_partner:
+      build:
+        context: ./nodejs
+      image: node-partner-api
+      container_name: node-partner-api
+      restart: unless-stopped
+      networks:
+        - backend
 ### NGINX Server #########################################
     nginx:
       build:
@@ -2097,3 +2105,5 @@ services:
         - frontend
         - backend
       restart: always
+
+  ### node js partner
