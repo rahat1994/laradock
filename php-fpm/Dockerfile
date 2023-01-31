@@ -544,7 +544,7 @@ RUN if [ ${INSTALL_MEMCACHED} = true ]; then \
 # Exif:
 ###########################################################################
 
-ARG INSTALL_EXIF=false
+ARG INSTALL_EXIF=true
 
 RUN if [ ${INSTALL_EXIF} = true ]; then \
     # Enable Exif PHP extentions requirements

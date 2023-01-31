@@ -425,7 +425,8 @@ services:
       container_name: node-partner-api
       restart: unless-stopped
       networks:
-
+        - frontend
+        - backend
 ### NGINX Server #########################################
     nginx:
       build:
@@ -448,6 +449,7 @@ services:
         - "${VARNISH_BACKEND_PORT}:81"
       depends_on:
         - php-fpm
+        - node_partner
       networks:
         - frontend
         - backend
