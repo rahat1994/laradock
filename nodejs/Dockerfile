@@ -2,11 +2,11 @@ FROM node:12-alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY ../../hotelszone_node_partner/package*.json ./
 
 RUN npm install 
 
-COPY . . 
+COPY ../../hotelszone_node_partner/ .
 
 EXPOSE 8080
 

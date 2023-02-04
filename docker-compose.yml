@@ -417,10 +417,10 @@ services:
       networks:
         - frontend
         - backend
-# Node aprtner
+# Node partner
     node_partner:
       build:
-        context: ./nodejs
+        context: ../hotelszone_node_partner/
       image: node-partner-api
       container_name: node-partner-api
       restart: unless-stopped
@@ -431,6 +431,7 @@ services:
     nginx:
       build:
         context: ./nginx
+        
         args:
           - CHANGE_SOURCE=${CHANGE_SOURCE}
           - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
@@ -438,6 +439,7 @@ services:
           - http_proxy
           - https_proxy
           - no_proxy
+      container_name: nginx
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
@@ -447,6 +449,7 @@ services:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
         - "${VARNISH_BACKEND_PORT}:81"
+      restart: unless-stopped
       depends_on:
         - php-fpm
         - node_partner
