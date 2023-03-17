@@ -566,6 +566,7 @@ services:
       restart: always
       ports:
         - "${MYSQL_PORT}:3306"
+      restart: always
       networks:
         - backend
 
